@@ -1,29 +1,157 @@
-.App {
-  font-family: sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+h3 {
+  color: #64748b;
   text-align: center;
 }
-.todo__container {
+
+.empty {
+  text-align: center;
+  color: #94a3b8;
+  padding: 20px;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(
+    135deg,
+    #0f172a,
+    #1e293b
+  );
+
+  min-height: 100vh;
+
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.todo__container {
+  width: 500px;
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 30px;
+
+  box-shadow:
+    0 15px 35px rgba(223, 223, 223, 0.15);
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.todo__container h1 {
+  text-align: center;
+  color: #111827;
+}
+
+.input {
+  display: flex;
+  gap: 12px;
+}
+
+.input input {
+  flex: 1;
+
+  padding: 14px;
+  color: #0f172a;
+  border: 2px solid #f0f0f0;
+  border-radius: 12px;
+  background-color: rgb(228, 228, 228);
+  font-size: 16px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.input input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 10px rgba(79, 70, 229, 0.15);
+}
+
+.input button {
+  border: none;
+
+  padding: 0 22px;
+
+  border-radius: 12px;
+
+  background: #4f46e5;
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.input button:hover {
+  background: #4338ca;
+  transform: translateY(-2px);
+}
+
 .task__container {
-  margin-top: 20px;
-  border: 2px solid black;
-  width: 70%;
-  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .task_List {
   display: flex;
   justify-content: space-between;
-  border: 2px solid black;
-  width: 70%;
-  padding: 5px;
+  align-items: center;
+
+  padding: 14px 16px;
+
+  background: #f8fafc;
+
+  border-radius: 12px;
+
+  transition: all 0.2s ease;
+}
+
+.task_List:hover {
+  background: #eef2ff;
+}
+
+.task_List span {
+  font-size: 16px;
+}
+
+.task_List > div {
+  display: flex;
+  gap: 12px;
+}
+
+.task_List > div span {
+  cursor: pointer;
+  font-size: 18px;
+
+  transition: transform 0.2s ease;
+}
+
+.task_List > div span:hover {
+  transform: scale(1.2);
 }
 
 .completed {
   text-decoration: line-through;
+  color: #9ca3af;
+  opacity: 0.7;
 }
