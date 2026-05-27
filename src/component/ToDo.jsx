@@ -29,18 +29,17 @@ export default function ToDo() {
       console.log(prev)
       return prev.map((todo) => {
         if (todo.id === id) {
-          return {...todo, status : !status}        
+          return {...todo, status : !todo.status}        
         }else{
-          return todo;
+          return todo
         }
       });
     });
   }, [])
   const handleRemove = useCallback((id) => {
-
     setTasks((prev) => {
       const newTask = prev.filter((i) => i.id != id);
-      return newTaskss
+      return newTask
     });
   }, [])
 
@@ -61,7 +60,7 @@ export default function ToDo() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
 
-  console.log("rendering ToDO Component")
+  // console.log("rendering ToDO Component")
   return (
     <div className="todo__container">
       <h1>📝 My Todo List</h1>

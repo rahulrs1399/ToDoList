@@ -1,12 +1,19 @@
-import { useState, memo } from 'react'
+import { useState, memo, useRef, useEffect } from 'react'
 
 export default memo(function TodoTasks({ todo, handleCompleted, handleRemove, handleUpdate }) {
   const [isEditing, setIsEditing] = useState(false)
   const [updatedTasks, setUpdatedTasks] = useState(todo.value)
-  console.log("list item rendering TodoTasks")
+  const inputRef = useRef(null)
+  // console.log("list item rendering TodoTasks")
   const handleEdit = (id) => {
     setIsEditing(true)
   }
+
+  useEffect(() => {
+    if(isEditing && inputRef.current){
+      inputRef.current.focus()
+    }
+  }, [isEditing])
 
   return (
 
@@ -16,6 +23,7 @@ export default memo(function TodoTasks({ todo, handleCompleted, handleRemove, ha
         todo.status ? <span className='completed'>{todo.value}</span> : isEditing
           ?
           <input
+            ref={inputRef}
             type="text"
             value={updatedTasks}
             onChange={(e) => setUpdatedTasks(e.target.value)} onKeyDown={(e) => {
@@ -30,7 +38,7 @@ export default memo(function TodoTasks({ todo, handleCompleted, handleRemove, ha
       <div>
         <span onClick={() => handleCompleted(todo.id)}>✅</span>
         {!isEditing && !todo.status && <span onClick={() => handleEdit(todo.id)}>✏️</span>}
-        <span onClick={() => handleRemove(todo.id)}>❌</span>
+        <span onClick={() => handleRemove(todo.id)}>🗑</span>
       </div>
     </div>
 
